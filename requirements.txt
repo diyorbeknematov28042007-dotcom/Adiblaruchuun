@@ -1,7 +1,7 @@
 aiogram
 aiohttp
 psycopg2-binary
-google-generativeai
+google-genai
 python-dotenv
 APScheduler
 pytz
