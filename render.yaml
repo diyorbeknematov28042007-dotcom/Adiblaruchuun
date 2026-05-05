@@ -1,0 +1,45 @@
+# Render.com deploy konfiguratsiyasi
+# PostgreSQL baza + Web Service
+
+databases:
+  - name: gafur-gulom-db
+    plan: free
+    databaseName: gafur_gulom
+    user: gafur_bot
+
+services:
+  - type: web
+    name: gafur-gulom-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: WEBHOOK_HOST
+        sync: false
+      - key: WEBHOOK_PATH
+        value: /webhook
+      - key: WEBHOOK_SECRET
+        generateValue: true
+      - key: WEB_SERVER_HOST
+        value: 0.0.0.0
+      - key: WEB_SERVER_PORT
+        value: "10000"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: gafur-gulom-db
+          property: connectionString
+      - key: GEMINI_API_KEYS
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.0-flash
+      - key: TIMEZONE
+        value: Asia/Tashkent

@@ -1,0 +1,7 @@
+aiogram
+aiohttp
+psycopg2-binary
+google-generativeai
+python-dotenv
+APScheduler
+pytz

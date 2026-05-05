@@ -1,0 +1,8 @@
+-- =========================================
+-- G'afur G'ulom Bot - PostgreSQL Schema
+-- ESLATMA: Bu fayl faqat referens uchun.
+-- Bot ishga tushganda jadvallar avtomatik yaratiladi (database.py -> init_tables)
+-- =========================================
+-- Render Dashboard -> New + -> PostgreSQL -> yarating
+-- DATABASE_URL avtomatik beriladi (render.yaml da fromDatabase bilan)
+-- =========================================
