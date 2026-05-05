@@ -1,10 +1,9 @@
-"""Gemini API bilan ishlash. Bir nechta API kalitlar orasida rotatsiya qiladi
-(quota tugashi yoki xatolik holatida boshqa kalitga o'tadi)."""
+"""Gemini API bilan ishlash. Bir nechta API kalitlar orasida rotatsiya qiladi."""
 import asyncio
 import logging
 from typing import Optional
-import google.generativeai as genai
-from google.api_core import exceptions as gex
+from google import genai
+from google.genai import types
 
 import config
 
@@ -42,11 +41,10 @@ class GeminiRotator:
         self.current_idx = 0
         self.failed_keys: set[int] = set()
 
-    def _configure(self, idx: int):
-        genai.configure(api_key=self.api_keys[idx])
+    def _get_client(self, idx: int):
+        return genai.Client(api_key=self.api_keys[idx])
 
     def _next_key(self) -> Optional[int]:
-        """Keyingi ishlaydigan kalitni topish."""
         for _ in range(len(self.api_keys)):
             self.current_idx = (self.current_idx + 1) % len(self.api_keys)
             if self.current_idx not in self.failed_keys:
@@ -54,10 +52,6 @@ class GeminiRotator:
         return None
 
     async def generate(self, history: list[dict], user_message: str) -> str:
-        """Gemini'dan javob olish.
-
-        history: [{"role": "user"|"model", "parts": ["text"]}]
-        """
         if not self.api_keys:
             raise RuntimeError("Hech qanday Gemini API kaliti sozlanmagan.")
 
@@ -67,39 +61,65 @@ class GeminiRotator:
         for _ in range(attempts):
             if self.current_idx in self.failed_keys:
                 if self._next_key() is None:
-                    # Hammasi yiqilgan - failed_keys'ni tozalaymiz va qaytadan urinib ko'ramiz
                     self.failed_keys.clear()
                     self.current_idx = 0
 
             try:
-                self._configure(self.current_idx)
-                model = genai.GenerativeModel(
-                    model_name=self.model_name,
-                    system_instruction=SYSTEM_PROMPT,
+                client = self._get_client(self.current_idx)
+
+                # History'ni yangi formatga o'tkazish
+                contents = []
+                for msg in history:
+                    role = msg.get("role", "user")
+                    if role == "model":
+                        role = "model"
+                    else:
+                        role = "user"
+                    parts_list = msg.get("parts", [])
+                    text = parts_list[0] if parts_list else ""
+                    contents.append(
+                        types.Content(
+                            role=role,
+                            parts=[types.Part.from_text(text=text)]
+                        )
+                    )
+
+                # Foydalanuvchi xabarini qo'shamiz
+                contents.append(
+                    types.Content(
+                        role="user",
+                        parts=[types.Part.from_text(text=user_message)]
+                    )
                 )
-                chat = model.start_chat(history=history)
-                # generate_content sinxron, alohida threadda
-                response = await asyncio.to_thread(chat.send_message, user_message)
+
+                generate_config = types.GenerateContentConfig(
+                    system_instruction=SYSTEM_PROMPT,
+                    max_output_tokens=1024,
+                    temperature=0.8,
+                )
+
+                response = await asyncio.to_thread(
+                    client.models.generate_content,
+                    model=self.model_name,
+                    contents=contents,
+                    config=generate_config,
+                )
                 return response.text or ""
 
-            except (gex.ResourceExhausted, gex.PermissionDenied,
-                    gex.Unauthenticated, gex.TooManyRequests) as e:
-                logger.warning(f"Gemini key {self.current_idx} muvaffaqiyatsiz: {e}")
-                self.failed_keys.add(self.current_idx)
-                last_error = e
-                if self._next_key() is None:
-                    break
             except Exception as e:
-                logger.exception(f"Gemini xatolik: {e}")
+                error_str = str(e).lower()
+                logger.warning(f"Gemini key {self.current_idx} xato: {e}")
                 last_error = e
-                # Boshqa kalitga o'tib ko'ramiz
+
+                if "quota" in error_str or "429" in error_str or "resource" in error_str:
+                    self.failed_keys.add(self.current_idx)
+
                 if self._next_key() is None:
                     break
 
         raise RuntimeError(f"Barcha Gemini kalitlar muvaffaqiyatsiz: {last_error}")
 
 
-# Global instance
 _rotator: Optional[GeminiRotator] = None
 
 
