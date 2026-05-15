@@ -13,24 +13,24 @@ T = {
     "subscribe_button": "📢 Obuna bo'lish",
 
     # Asosiy menyu
-    "main_menu": "📚 <b>G'afur G'ulom haqidagi botga xush kelibsiz!</b>\n\nQuyidagi bo'limlardan birini tanlang:",
-    "menu_chat": "💬 Adib bilan suhbat",
-    "menu_about": "👤 Adib haqida",
-    "menu_works": "📖 Adib ijodi",
+    "main_menu": "📚 <b>Xadicha Sulaymanova haqidagi botga xush kelibsiz!</b>\n\nQuyidagi bo'limlardan birini tanlang:",
+    "menu_chat": "💬 Olima bilan suhbat",
+    "menu_about": "👤 Olima haqida",
+    "menu_works": "📖 Olima ijodi",
     "menu_contests": "🏆 Stipendiya va tanlovlar",
     "menu_questions": "❓ Savol berish",
     "menu_language": "🌐 Tilni o'zgartirish",
     "back": "⬅️ Orqaga",
     "back_to_menu": "🏠 Asosiy menyu",
 
-    # Adib bilan suhbat
+    # Olima bilan suhbat
     "chat_intro": (
-        "💬 <b>Adib bilan suhbat</b>\n\n"
-        "Endi siz G'afur G'ulom bilan suhbatlashasiz. Savolingizni yozing — adibimiz "
+        "💬 <b>Olima bilan suhbat</b>\n\n"
+        "Endi siz Xadicha Sulaymanova bilan suhbatlashasiz. Savolingizni yozing — olimamiz "
         "siz bilan o'z uslubida muloqot qiladi.\n\n"
         "<i>Suhbatni yakunlash uchun «⬅️ Orqaga» tugmasini bosing.</i>"
     ),
-    "chat_thinking": "✍️ Adib javob yozmoqda...",
+    "chat_thinking": "✍️ Olima javob yozmoqda...",
     "chat_error": "❌ Kechirasiz, hozir javob bera olmayapman. Birozdan keyin urinib ko'ring.",
     "chat_ended": "Suhbat yakunlandi.",
 
@@ -38,15 +38,15 @@ T = {
     "biography_empty": "Biografiya hali kiritilmagan.",
 
     # Ijod
-    "works_menu": "📖 <b>Adib ijodi</b>\n\n📚 Asarlar: <b>{asar}</b> ta\n📝 Hikoyalar: <b>{hikoya}</b> ta\n🪶 She'rlar: <b>{sher}</b> ta",
-    "works_asar": "📚 Asarlar ({n})",
-    "works_hikoya": "📝 Hikoyalar ({n})",
-    "works_sher": "🪶 She'rlar ({n})",
+    "works_menu": "📖 <b>Olima ijodi</b>\n\n📚 Darsliklar: <b>{asar}</b> ta\n📝 Maqolalar: <b>{hikoya}</b> ta\n🪶 Asarlar: <b>{sher}</b> ta",
+    "works_asar": "📚 Darsliklar ({n})",
+    "works_hikoya": "📝 Maqolalar ({n})",
+    "works_sher": "🪶 Asarlar ({n})",
     "works_empty": "Bu bo'limda hozircha ma'lumot yo'q.",
     "works_list_title": {
-        "asar": "📚 <b>Asarlar ro'yxati:</b>",
-        "hikoya": "📝 <b>Hikoyalar ro'yxati:</b>",
-        "sher": "🪶 <b>She'rlar ro'yxati:</b>",
+        "asar": "📚 <b>Darsliklar ro'yxati:</b>",
+        "hikoya": "📝 <b>Maqolalar ro'yxati:</b>",
+        "sher": "🪶 <b>Asarlar ro'yxati:</b>",
     },
 
     # Tanlovlar
@@ -62,7 +62,7 @@ T = {
 
     # Kun hikmati
     "daily_quote_title": "💡 <b>Kun hikmati</b>",
-    "quote_source": "— G'afur G'ulom",
+    "quote_source": "— Xadicha Sulaymanova",
 
     # Admin panel
     "admin_only": "❌ Bu buyruq faqat adminlar uchun.",
