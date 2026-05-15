@@ -52,10 +52,10 @@ def lang_select_kb(prefix: str) -> InlineKeyboardMarkup:
 
 def content_type_kb() -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
-    kb.button(text="👤 Adib haqida (biografiya)", callback_data="adm:c_bio")
-    kb.button(text="📚 Asar qo'shish", callback_data="adm:c_work:asar")
-    kb.button(text="📝 Hikoya qo'shish", callback_data="adm:c_work:hikoya")
-    kb.button(text="🪶 She'r qo'shish", callback_data="adm:c_work:sher")
+    kb.button(text="👤 Olima haqida (biografiya)", callback_data="adm:c_bio")
+    kb.button(text="📚 Darslik qo'shish", callback_data="adm:c_work:asar")
+    kb.button(text="📝 Maqola qo'shish", callback_data="adm:c_work:hikoya")
+    kb.button(text="🪶 Asar qo'shish", callback_data="adm:c_work:sher")
     kb.button(text="🏆 Tanlov/stipendiya qo'shish", callback_data="adm:c_contest")
     kb.button(text="⬅️ Orqaga", callback_data="adm:back")
     kb.adjust(1)
