@@ -10,9 +10,9 @@ T = {
     "subscribe_failed": "❌ You haven't subscribed to all channels yet.",
     "subscribe_button": "📢 Subscribe",
 
-    "main_menu": "📚 <b>Welcome to the G'afur G'ulom bot!</b>\n\nChoose a section:",
-    "menu_chat": "💬 Chat with the writer",
-    "menu_about": "👤 About the writer",
+    "main_menu": "📚 <b>Welcome to the Xadicha Sulaymanova bot!</b>\n\nChoose a section:",
+    "menu_chat": "💬 Chat with the scholar",
+    "menu_about": "👤 About the scholar",
     "menu_works": "📖 Works",
     "menu_contests": "🏆 Scholarships & Contests",
     "menu_questions": "❓ Ask a question",
@@ -21,26 +21,26 @@ T = {
     "back_to_menu": "🏠 Main menu",
 
     "chat_intro": (
-        "💬 <b>Chat with the writer</b>\n\n"
-        "You're now chatting with G'afur G'ulom. Write your question — the writer "
-        "will respond in his own style.\n\n"
+        "💬 <b>Chat with the scholar</b>\n\n"
+        "You're now chatting with Xadicha Sulaymanova. Write your question — the scholar "
+        "will respond in her own style.\n\n"
         "<i>Press «⬅️ Back» to end the chat.</i>"
     ),
-    "chat_thinking": "✍️ The writer is composing a reply...",
+    "chat_thinking": "✍️ The scholar is composing a reply...",
     "chat_error": "❌ Sorry, I can't reply right now. Please try again later.",
     "chat_ended": "Chat ended.",
 
     "biography_empty": "Biography hasn't been added yet.",
 
-    "works_menu": "📖 <b>Writer's works</b>\n\n📚 Books: <b>{asar}</b>\n📝 Stories: <b>{hikoya}</b>\n🪶 Poems: <b>{sher}</b>",
-    "works_asar": "📚 Books ({n})",
-    "works_hikoya": "📝 Stories ({n})",
-    "works_sher": "🪶 Poems ({n})",
+    "works_menu": "📖 <b>Scholar's works</b>\n\n📚 Textbooks: <b>{asar}</b>\n📝 Articles: <b>{hikoya}</b>\n🪶 Works: <b>{sher}</b>",
+    "works_asar": "📚 Textbooks ({n})",
+    "works_hikoya": "📝 Articles ({n})",
+    "works_sher": "🪶 Works ({n})",
     "works_empty": "No materials in this section yet.",
     "works_list_title": {
-        "asar": "📚 <b>Books:</b>",
-        "hikoya": "📝 <b>Stories:</b>",
-        "sher": "🪶 <b>Poems:</b>",
+        "asar": "📚 <b>Textbooks:</b>",
+        "hikoya": "📝 <b>Articles:</b>",
+        "sher": "🪶 <b>Works:</b>",
     },
 
     "contests_title": "🏆 <b>Scholarships & Contests</b>",
@@ -53,7 +53,7 @@ T = {
     "answer_received": "📩 <b>Admin's reply:</b>\n\n{answer}\n\n<i>Your question:</i>\n<i>{question}</i>",
 
     "daily_quote_title": "💡 <b>Wisdom of the day</b>",
-    "quote_source": "— G'afur G'ulom",
+    "quote_source": "— Xadicha Sulaymanova",
 
     "admin_only": "❌ This command is for admins only.",
     "admin_panel": "🛠 <b>Admin panel</b>\n\nChoose a section:",
